@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket</title>
+  <style>
+    body { width: 80mm; font-family: sans-serif; font-size: 12px; padding: 8px; }
+    .section { margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 5px; }
+    .bold { font-weight: bold; }
+    .row { display: flex; justify-content: space-between; }
+    .title { margin-top: 10px; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="bold">NO. TICKET: <span id="ticket"></span></div>
+    <div id="fecha"></div>
+  </div>
+  <div class="section"><div class="bold" id="cliente"></div></div>
+  <div class="section">
+    <div class="row"><div>Total Kg disponibles:</div><div id="kgDisp"></div></div>
+    <div class="row"><div>Kg registrado en ticket:</div><div id="kgReg"></div></div>
+  </div>
+  <div class="section"><div class="bold">Tipo de procesamiento</div><div id="tipo"></div></div>
+  <div class="section"><div class="bold title">NOTAS:</div><div id="notas"></div></div>
+  <div class="section"><div class="bold title">BITÁCORAS:</div><div id="bitacora"></div></div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("ticket").textContent = urlParams.get("ticket") || "";
+    document.getElementById("fecha").textContent = urlParams.get("fecha") || "";
+    document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
+    document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
+    document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
+    document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
+    document.getElementById("notas").textContent = urlParams.get("notas") || "";
+    document.getElementById("bitacora").textContent = urlParams.get("bitacora") || "";
+    window.onload = () => window.print();
+  </script>
+</body>
+</html>
