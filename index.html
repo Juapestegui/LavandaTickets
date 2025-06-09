@@ -25,17 +25,22 @@
   <div class="section"><div class="bold title">NOTAS:</div><div id="notas"></div></div>
   <div class="section"><div class="bold title">BITÁCORAS:</div><div id="bitacora"></div></div>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    document.getElementById("ticket").textContent = urlParams.get("ticket") || "";
-    document.getElementById("fecha").textContent = urlParams.get("fecha") || "";
-    document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
-    document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
-    document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
-    document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
-    document.getElementById("notas").textContent = urlParams.get("notas") || "";
-    document.getElementById("bitacora").textContent = urlParams.get("bitacora") || "";
-    window.onload = () => window.print();
-  </script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  document.getElementById("ticket").textContent = urlParams.get("ticket") || "";
+  document.getElementById("fecha").textContent = urlParams.get("fecha") || "";
+  document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
+  document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
+  document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
+  document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
+
+  const notasRaw = urlParams.get("notas") || "";
+  document.getElementById("notas").innerHTML = notasRaw.replace(/\n/g, "<br>");
+
+  const bitacoraRaw = urlParams.get("bitacora") || "";
+  document.getElementById("bitacora").innerHTML = bitacoraRaw.replace(/\n/g, "<br>");
+
+  window.onload = () => window.print();
+</script>
 </body>
 </html>
