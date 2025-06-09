@@ -3,13 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Ticket</title>
-  <style>
-    body { width: 80mm; font-family: sans-serif; font-size: 12px; padding: 8px; }
-    .section { margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 5px; }
-    .bold { font-weight: bold; }
-    .row { display: flex; justify-content: space-between; }
-    .title { margin-top: 10px; margin-bottom: 4px; }
-  </style>
+<style>
+  @media print {
+    @page {
+      size: 80mm auto; /* Set width to 80mm and allow variable height */
+      margin: 0; /* Remove default page margins */
+    }
+
+    body {
+      margin: 0;
+    }
+  }
+
+  body {
+    width: 80mm;
+    font-family: sans-serif;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .section {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .title {
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+</style>
 </head>
 <body>
   <div class="section">
