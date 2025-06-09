@@ -33,13 +33,8 @@
   document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
   document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
   document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
-
-  const notasRaw = urlParams.get("notas") || "";
-  document.getElementById("notas").innerHTML = notasRaw.replace(/\n/g, "<br>");
-
-  const bitacoraRaw = urlParams.get("bitacora") || "";
-  document.getElementById("bitacora").innerHTML = bitacoraRaw.replace(/\n/g, "<br>");
-
+  document.getElementById("notas").innerHTML = (urlParams.get("notas") || "").replace(/\n/g, "<br>");
+  document.getElementById("bitacora").innerHTML = (urlParams.get("bitacora") || "").replace(/\n/g, "<br>");
   window.onload = () => window.print();
 </script>
 </body>
