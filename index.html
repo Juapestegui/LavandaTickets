@@ -53,6 +53,10 @@
     <div class="row"><div>Total Kg disponibles:</div><div id="kgDisp"></div></div>
     <div class="row"><div>Kg registrado en ticket:</div><div id="kgReg"></div></div>
   </div>
+  <div class="section">
+  <div class="row"><div>Edificio:</div><div id="edificio"></div></div>
+  <div class="row"><div>Habitación:</div><div id="habitacion"></div></div>
+  </div>
   <div class="section"><div class="bold">Tipo de procesamiento</div><div id="tipo"></div></div>
   <div class="section"><div class="bold title">NOTAS:</div><div id="notas"></div></div>
   <div class="section"><div class="bold title">BITÁCORAS:</div><div id="bitacora"></div></div>
@@ -64,6 +68,8 @@
   document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
   document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
   document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
+  document.getElementById("edificio").textContent = urlParams.get("edificio") || "";
+  document.getElementById("habitacion").textContent = urlParams.get("habitacion") || "";
   document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
   document.getElementById("notas").innerHTML = (urlParams.get("notas") || "").replace(/\n/g, "<br>");
   document.getElementById("bitacora").innerHTML = (urlParams.get("bitacora") || "").replace(/\n/g, "<br>");
