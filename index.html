@@ -3,77 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <title>Ticket</title>
-<style>
-  @media print {
-    @page {
-      size: 80mm auto; /* Set width to 80mm and allow variable height */
-      margin: 0; /* Remove default page margins */
+  <style>
+    @media print {
+      @page {
+        size: 80mm auto;
+        margin: 0;
+      }
+      body {
+        margin: 0;
+      }
     }
 
     body {
-      margin: 0;
+      width: 80mm;
+      font-family: sans-serif;
+      font-size: 12px;
+      padding: 8px;
     }
-  }
 
-  body {
-    width: 80mm;
-    font-family: sans-serif;
-    font-size: 12px;
-    padding: 8px;
-  }
+    .section {
+      margin-bottom: 10px;
+      border-bottom: 1px solid #000;
+      padding-bottom: 5px;
+    }
 
-  .section {
-    margin-bottom: 10px;
-    border-bottom: 1px solid #000;
-    padding-bottom: 5px;
-  }
+    .bold {
+      font-weight: bold;
+    }
 
-  .bold {
-    font-weight: bold;
-  }
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
 
-  .row {
-    display: flex;
-    justify-content: space-between;
-  }
+    .title {
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
 
-  .title {
-    margin-top: 10px;
-    margin-bottom: 4px;
-  }
-</style>
+    /* Larger text for visibility */
+    .big-info {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .mid-info {
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 3px;
+    }
+  </style>
 </head>
 <body>
+
   <div class="section">
     <div class="bold">NO. TICKET: <span id="ticket"></span></div>
     <div id="fecha"></div>
   </div>
-  <div class="section"><div class="bold" id="cliente"></div></div>
+
+  <!-- Big Client Info -->
+  <div class="section">
+    <div class="big-info" id="cliente"></div>
+    <div class="mid-info" id="edificio"></div>
+    <div class="mid-info" id="habitacion"></div>
+  </div>
+
+  <!-- Telefóno -->
+  <div class="section">
+    <div class="row"><div>Teléfono:</div><div id="telefono"></div></div>
+  </div>
+
+  <!-- Kilos -->
   <div class="section">
     <div class="row"><div>Total Kg disponibles:</div><div id="kgDisp"></div></div>
     <div class="row"><div>Kg registrado en ticket:</div><div id="kgReg"></div></div>
   </div>
-  <div class="section">
-  <div class="row"><div>Edificio:</div><div id="edificio"></div></div>
-  <div class="row"><div>Habitación:</div><div id="habitacion"></div></div>
-  </div>
-  <div class="section"><div class="bold">Tipo de procesamiento</div><div id="tipo"></div></div>
-  <div class="section"><div class="bold title">NOTAS:</div><div id="notas"></div></div>
-  <div class="section"><div class="bold title">BITÁCORAS:</div><div id="bitacora"></div></div>
 
-<script>
-  const urlParams = new URLSearchParams(window.location.search);
-  document.getElementById("ticket").textContent = urlParams.get("ticket") || "";
-  document.getElementById("fecha").textContent = urlParams.get("fecha") || "";
-  document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
-  document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
-  document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
-  document.getElementById("edificio").textContent = urlParams.get("edificio") || "";
-  document.getElementById("habitacion").textContent = urlParams.get("habitacion") || "";
-  document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
-  document.getElementById("notas").innerHTML = (urlParams.get("notas") || "").replace(/\n/g, "<br>");
-  document.getElementById("bitacora").innerHTML = (urlParams.get("bitacora") || "").replace(/\n/g, "<br>");
-  window.onload = () => window.print();
-</script>
+  <!-- Tipo de procesamiento -->
+  <div class="section">
+    <div class="bold">Tipo de procesamiento</div>
+    <div id="tipo"></div>
+  </div>
+
+  <!-- Notas -->
+  <div class="section">
+    <div class="bold title">NOTAS:</div>
+    <div id="notas"></div>
+  </div>
+
+  <!-- Bitácora -->
+  <div class="section">
+    <div class="bold title">BITÁCORAS:</div>
+    <div id="bitacora"></div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("ticket").textContent = urlParams.get("ticket") || "";
+    document.getElementById("fecha").textContent = urlParams.get("fecha") || "";
+    document.getElementById("cliente").textContent = urlParams.get("cliente") || "";
+    document.getElementById("edificio").textContent = urlParams.get("edificio") || "";
+    document.getElementById("habitacion").textContent = urlParams.get("habitacion") || "";
+    document.getElementById("telefono").textContent = urlParams.get("telefono") || "";
+    document.getElementById("kgDisp").textContent = urlParams.get("kgDisp") || "0.0";
+    document.getElementById("kgReg").textContent = urlParams.get("kgReg") || "0.0";
+    document.getElementById("tipo").textContent = urlParams.get("tipo") || "";
+    document.getElementById("notas").innerHTML = (urlParams.get("notas") || "").replace(/\n/g, "<br>");
+    document.getElementById("bitacora").innerHTML = (urlParams.get("bitacora") || "").replace(/\n/g, "<br>");
+    window.onload = () => window.print();
+  </script>
+
 </body>
 </html>
